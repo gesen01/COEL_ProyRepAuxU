@@ -1,0 +1,1 @@
+EXEC spALTER_TABLE 'RepInvUnidades','SerieLote','VARCHAR(25) NULL'
