@@ -28,7 +28,7 @@ InvAuxU.Sucursal,
 Art.Descripcion1,
 SerieLoteMov.SerieLote,
 IIF(ISNULL(InvAuxU.CargoU,0)<>0,IIF(ISNULL(InvAuxU.CargoU,0)<0,SerieLoteMov.Cantidad*-1,SerieLoteMov.Cantidad),0) AS 'CargoS',
-IIF(ISNULL(InvAuxU.AbonoU,0)<>0,SerieLoteMov.Cantidad,0) AS 'AbonoS',
+IIF(ISNULL(InvAuxU.AbonoU,0)<>0,IIF(ISNULL(InvAuxU.AbonoU,0)<0,SerieLoteMov.Cantidad*-1,SerieLoteMov.Cantidad),0) AS 'AbonoS',
 SerieLoteMov.Cantidad
 FROM
 InvAuxU

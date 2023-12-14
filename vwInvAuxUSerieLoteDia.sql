@@ -31,7 +31,7 @@ WHEN 'INV' THEN InvD.Costo END,0),
 AuxiliarU.ModuloID,
 SerieLoteMov.SerieLote,
 IIF(ISNULL(AuxiliarU.CargoU,0)<>0,IIF(ISNULL(AuxiliarU.CargoU,0)<0,SerieLoteMov.Cantidad*-1,SerieLoteMov.Cantidad),0) AS 'CargoS',
-IIF(ISNULL(AuxiliarU.AbonoU,0)<>0,SerieLoteMov.Cantidad,0) AS 'AbonoS',
+IIF(ISNULL(AuxiliarU.AbonoU,0)<>0,IIF(ISNULL(AuxiliarU.AbonoU,0)<0,SerieLoteMov.Cantidad*-1,SerieLoteMov.Cantidad),0) AS 'AbonoS',
 'CantidadSerie'=SerieLoteMov.Cantidad
 FROM Art
 LEFT OUTER JOIN AuxiliarU  ON Art.Articulo = AuxiliarU.Cuenta AND (CargoU IS NOT NULL OR AbonoU IS NOT NULL)
